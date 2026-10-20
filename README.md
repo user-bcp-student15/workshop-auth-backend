@@ -14,6 +14,10 @@ mvn quarkus:dev
 
 Servicio: `http://localhost:8080`
 
+El servicio requiere `AUTH_TOKEN_SECRET` con al menos 32 bytes UTF-8. Configure el mismo secreto en el consumidor de la API de requerimientos. El backend emite tokens JWT HS256 con duración de 3600 segundos; el formato legacy Base64 ya no se acepta como credencial.
+
+Para ejecución local, configure un secreto de laboratorio mediante la variable de entorno antes de iniciar Quarkus. No reutilice el secreto de pruebas ni publique el secreto en el repositorio.
+
 Credenciales locales:
 
 - `student` / `Workshop123!`
@@ -24,6 +28,6 @@ Credenciales locales:
 - `POST /auth/login`
 - `GET /q/health`
 
-## Propósito de la rama `main`
+## Propósito del laboratorio
 
-La rama contiene deuda técnica y de seguridad deliberada: SQL concatenado, contraseñas en texto plano, token reversible, secreto hardcodeado, CORS permisivo, método largo, manejo genérico de excepciones y dependencias con CVEs.
+El sistema conserva deuda técnica fuera del alcance de este cambio, incluidas contraseñas en texto plano, CORS permisivo y manejo genérico de excepciones. Mantenerlo en ambientes aislados y consultar `RETO.md` antes de cualquier despliegue.
